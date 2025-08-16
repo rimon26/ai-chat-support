@@ -36,13 +36,12 @@ app.post("/api/chat", async (req, res) => {
     const parts = [
       {
         text: `
-You are an AI customer support assistant for a digital platform dedicated to budget-conscious travelers.
-Respond professionally, clearly, and concisely.
--- Here is some info about the company --
-${knowledge}
-
-User: ${prompt}
-`,
+      You are an AI customer support assistant for a digital platform dedicated to budget-conscious travelers.
+      Respond professionally, clearly, and concisely.
+      -- Here is some info about the company --
+      ${knowledge}
+      User: ${prompt}
+      `,
       },
     ];
 

@@ -63,7 +63,7 @@ sendBtn.addEventListener("click", async () => {
     img.src = URL.createObjectURL(imageInput.files[0]);
     img.style.alignSelf = "flex-end";
     img.style.maxWidth = "200px";
-    img.style.margin = "0 0 10px";
+    img.style.margin = "-17px 0 15px";
     img.style.borderRadius = "10px";
     chatBody.appendChild(img);
   }
@@ -164,4 +164,35 @@ async function getReply(input, base64Image = null) {
     errorMsg.textContent = "❌ Something went wrong. Try again.";
     chatBody.appendChild(errorMsg);
   }
+}
+
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (!SpeechRecognition) {
+  alert("Your browser does not support Speech Recognition");
+} else {
+  const recognition = new SpeechRecognition();
+
+  // Set recognition settings
+  recognition.continuous = false; // Stops automatically when speech ends
+  recognition.lang = "en-US"; // Language
+  recognition.interimResults = false; // Only final results
+
+  const voiceBtn = document.querySelector(".bi-mic");
+
+  voiceBtn.addEventListener("click", () => {
+    recognition.start();
+    input.value = "Listening...";
+    input.classList.toggle("voice");
+  });
+
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    input.value = transcript;
+  };
+
+  recognition.onerror = (event) => {
+    input.value = `Error: ${event.error}`;
+  };
 }

@@ -11,6 +11,10 @@
   color: #333;
 }
 
+strong {
+  font-weight: 600;
+}
+
 .bi-chat {
   position: fixed;
   bottom: 100px;
