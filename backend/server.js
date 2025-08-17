@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 import fs from "fs/promises";
 import path from "path";
 
@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 
 // Initialize Gemini
-const ai = new GoogleGenerativeAI({
+const ai = new GoogleGenAI({
   apiKey: process.env.GOOGLE_API_KEY,
 });
 
